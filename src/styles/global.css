@@ -1,0 +1,60 @@
+.page-title{
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-align: center;
+    padding-top: 5rem;
+}
+h2{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-align: center;
+}
+p{
+    text-align: center;
+    color: var(--text-color);
+}
+#root {
+    width: 100%;
+    margin: 0;
+    background-color: var(--background-color);
+}
+.section{
+    padding: 2rem;
+}
+/* .container{
+    max-width:1200px;
+    margin: 0 auto;
+} */
+.profile-card{
+    background-color: antiquewhite;
+    box-shadow: 5px 5px 5px;
+    border-radius: 10px;
+    border: 1px solid hsl(0, 0%, 80%);
+    width: 10rem;
+}
+header{
+    background-color: cornflowerblue;
+    width: 100%;
+    top: 0;
+    position: absolute;
+}
+.nav-list{
+    list-style-type: none;
+    display: flex;
+    gap: 2em;
+}
+.nav-list > li > a{
+    color: white;
+}
+img{
+    display: block;
+    margin:0 auto;
+}
+.flex-container{
+    max-width:1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2em;
+}
