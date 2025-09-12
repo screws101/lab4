@@ -54,21 +54,29 @@ function App() {
   // };
   return (
     <>
-      <header>
+      <header className="app-header">
         <Header/>
       </header>
       <main>
-        <Wrapper id="header">
+        <div id="header-title">
           <h1>Profile App</h1>
-          {/* <button onClick={handleClick}>
-            {clicked ? "Click me" : "Clicked"}
-          </button> */}
-        </Wrapper>
+        </div>
         <Wrapper id="about">
           <About/>
         </Wrapper>
+        <Wrapper id="filters">
+            <Filters
+            className = "filters-line"
+            titles={titles}
+            onChange={handleChange}
+            searchName={handleSearch}
+            clear={handleClick}
+            search = {search}
+            title = {title}
+          />
+        </Wrapper>
+
         <Wrapper id="profiles">
-          <Filters titles={titles} onChange={handleChange} searchName={handleSearch} clear={handleClick} search = {search} title = {title}/>
           <div className="flex-container">
             {
               filteredProfiles.map((profile)=>(
@@ -76,8 +84,8 @@ function App() {
                   key={profile.email}
                   name={profile.name}
                   title={profile.title}
-                  email={profile.email}>
-
+                  email={profile.email}
+                  img={profile.img}>
                 </Card>
               ))
             }

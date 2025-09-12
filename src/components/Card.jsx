@@ -1,4 +1,3 @@
-import imgMan from'../assets/headshot-man.jpg'
 
 const Card = ({name, title, email, img}) => {
     return (

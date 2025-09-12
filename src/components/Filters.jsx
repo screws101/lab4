@@ -2,7 +2,7 @@ const Filters = ({titles, onChange, searchName, clear, title, search}) => {
     return(
         <div className="filter-container">
             <div className="select-filter">
-                <label htmlFor="seclect">Select a title:</label>
+                <label htmlFor="select">Select a title:</label>
                 <select id="select" value = {title} onChange={onChange}>
                     <option value="">All</option>
                     {
@@ -12,7 +12,7 @@ const Filters = ({titles, onChange, searchName, clear, title, search}) => {
             </div>
             <div className="search-box-container">
                 <label htmlFor="search">Search by name:</label>
-                <input id="search" value = {search} type="text" placehoder="Enter name" onChange={searchName}/>
+                <input id="search" value = {search} type="text" placeholder="Enter name" onChange={searchName}/>
             </div>
             <button onClick={clear}>Clear</button>
         </div>
