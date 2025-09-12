@@ -1,4 +1,4 @@
-const Filters = ({title, onChange, searchName, clear, title, search}) => {
+const Filters = ({titles, onChange, searchName, clear, title, search}) => {
     return(
         <div className="filter-container">
             <div className="select-filter">
@@ -6,11 +6,11 @@ const Filters = ({title, onChange, searchName, clear, title, search}) => {
                 <select id="select" value = {title} onChange={onChange}>
                     <option value="">All</option>
                     {
-                        titles.map(title => <option key ={title} value = {title}>{title}</option>)
+                        titles.map(ti => <option key ={ti} value = {ti}>{ti}</option>)
                     }
                 </select>
             </div>
-            <div classNmea="search-box-container">
+            <div className="search-box-container">
                 <label htmlFor="search">Search by name:</label>
                 <input id="search" value = {search} type="text" placehoder="Enter name" onChange={searchName}/>
             </div>

@@ -9,7 +9,6 @@ import imgMan from './assets/headshot-man.jpg'
 import imgWoman from './assets/headshot-woman.jpg'
 import Filters from './components/Filters'
 import {useState} from "react"
-import Filters from "./components/Filters"
 
 
 function App() {
@@ -29,7 +28,7 @@ function App() {
   ]
   const titles = [...new Set(profiles.map(profile => profile.title))]
   const[title, setTitle] = useState("")
-  const handChange = (event) => {
+  const handleChange = (event) => {
     setTitle(event.target.value)
     console.log(title)
   }
@@ -40,7 +39,7 @@ function App() {
   }
 
 
-  const filteredProfiles = profile.filter(profile =>
+  const filteredProfiles = profiles.filter(profile =>
     (!title || profile.title  == title) && (profile.name.toLowerCase().includes(search.toLowerCase()))
   )
 
@@ -61,9 +60,9 @@ function App() {
       <main>
         <Wrapper id="header">
           <h1>Profile App</h1>
-          <button onClick={handleClick}>
+          {/* <button onClick={handleClick}>
             {clicked ? "Click me" : "Clicked"}
-          </button>
+          </button> */}
         </Wrapper>
         <Wrapper id="about">
           <About/>
@@ -72,7 +71,7 @@ function App() {
           <Filters titles={titles} onChange={handleChange} searchName={handleSearch} clear={handleClick} search = {search} title = {title}/>
           <div className="flex-container">
             {
-              profiles.map((profile)=>(
+              filteredProfiles.map((profile)=>(
                 <Card
                   key={profile.email}
                   name={profile.name}
@@ -84,23 +83,7 @@ function App() {
             }
           </div>
         </Wrapper>
-        <div className="section">
-          <div className="about-container">
-            <About/>
-          </div>
-        </div>
 
-        <div className="section" id="profiles">
-          <div className="container">
-            <div className="flex-container">
-              {
-                profiles.map((profile,index) => (
-                  <Card key={index} name={profile.name} title={profile.title} email={profile.email} img={profile.img} />
-                ))
-              }
-            </div>
-          </div>
-        </div>
       </main>
 
     </>

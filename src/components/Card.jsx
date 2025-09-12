@@ -3,7 +3,7 @@ import imgMan from'../assets/headshot-man.jpg'
 const Card = ({name, title, email, img}) => {
     return (
         <div className="profile-card">
-            <div Classname='profile-card_img'>
+            <div className='profile-card_img'>
                 <img
                 src = {img}
                 alt= {name}
