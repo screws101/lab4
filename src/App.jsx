@@ -9,9 +9,15 @@ import imgMan from './assets/headshot-man.jpg'
 import imgWoman from './assets/headshot-woman.jpg'
 import Filters from './components/Filters'
 import {useState} from "react"
+import styles from "./components/header.module.css"
+import cardStyles from "./components/card.module.css";
+import {Toggle} from "./components/Toggle.jsx";
+
 
 
 function App() {
+  const [isDark, setIsDark] = useState(false);
+
   const profiles = [
     {
       name: "John Doe",
@@ -54,13 +60,18 @@ function App() {
   // };
   return (
     <>
-      <header className="app-header">
+    <div className='App' theme={isDark ? "dark" : "light"}>
+      <header className={styles["app-header"]}>
         <Header/>
       </header>
       <main>
         <div id="header-title">
           <h1>Profile App</h1>
         </div>
+        <Toggle
+        isChecked={isDark}
+        handleChange={() => setIsDark(!isDark)}
+        />
         <Wrapper id="about">
           <About/>
         </Wrapper>
@@ -77,7 +88,7 @@ function App() {
         </Wrapper>
 
         <Wrapper id="profiles">
-          <div className="flex-container">
+          <div className={cardStyles["flex-container"]}>
             {
               filteredProfiles.map((profile)=>(
                 <Card
@@ -94,6 +105,8 @@ function App() {
 
       </main>
 
+    </div>
+      
     </>
   )
 }

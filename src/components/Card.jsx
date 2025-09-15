@@ -1,15 +1,16 @@
+import styles from "./card.module.css"
 
 const Card = ({name, title, email, img}) => {
     return (
-        <div className="profile-card">
-            <div className='profile-card_img'>
+        <div className={styles["profile-card"]}>
+            <div className={styles['profile-card_img']}>
                 <img
                 src = {img}
                 alt= {name}
                 style={{ width: "100px", height: "100px", borderRadius: "8px" }}
                 />
             </div>
-            <div className = "profile-card_content">
+            <div className = {styles["profile-card_content"]}>
                 <h2>{name}</h2>
                 <p>{title}</p>
                 <p>
