@@ -12,13 +12,16 @@ import {useState} from "react"
 import styles from "./components/header.module.css"
 import cardStyles from "./components/card.module.css";
 import {Toggle} from "./components/Toggle.jsx";
+import AddProfile from './components/AddProfile';
+import addStyles from './components/addProfile.module.css';
+
 
 
 
 function App() {
   const [isDark, setIsDark] = useState(false);
 
-  const profiles = [
+  const [profiles, setProfiles] = useState([
     {
       name: "John Doe",
       title: "Software Engineer",
@@ -31,7 +34,8 @@ function App() {
       email:"jane.@email.org",
       img: imgWoman
     }
-  ]
+  ]);
+
   const titles = [...new Set(profiles.map(profile => profile.title))]
   const[title, setTitle] = useState("")
   const handleChange = (event) => {
@@ -54,10 +58,11 @@ function App() {
     setSearch("")
   }
 
-  // const [clicked, setClicked] = useState(false)
-  // const handleClick = () => {
-  //   setClicked(prev => !prev)
-  // };
+  const handleAddProfile = (newProfile) => {
+    setProfiles((prevProfiles) => [...prevProfiles, newProfile]);
+  };
+
+
   return (
     <>
     <div className='App' theme={isDark ? "dark" : "light"}>
@@ -74,6 +79,9 @@ function App() {
         />
         <Wrapper id="about">
           <About/>
+        </Wrapper>
+        <Wrapper id="add-profile">
+          <AddProfile onAddProfile={handleAddProfile}/>
         </Wrapper>
         <Wrapper id="filters">
             <Filters
@@ -96,8 +104,8 @@ function App() {
                   name={profile.name}
                   title={profile.title}
                   email={profile.email}
-                  img={profile.img}>
-                </Card>
+                  img={typeof profile.img === "string" ? profile.img : URL.createObjectURL(profile.img)}
+                />
               ))
             }
           </div>
