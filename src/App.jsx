@@ -3,10 +3,9 @@ import Card1 from './components/Card1'
 import Card2 from './components/Card2'
 import About from './components/About'
 import Header from './components/Header'
-import Card from './components/Card'
-import Wrapper from './components/Wrapper'
-// import imgMan from './assets/headshot-man.jpg'
-// import imgWoman from './assets/headshot-woman.jpg'
+import Card from "./components/Card.jsx"
+import Wrapper from './components/Wrapper';
+
 import Filters from './components/Filters'
 import {useState, useEffect} from "react"
 import styles from "./components/header.module.css"
@@ -14,6 +13,10 @@ import cardStyles from "./components/card.module.css";
 import {Toggle} from "./components/Toggle.jsx";
 import AddProfile from './components/AddProfile';
 import addStyles from './components/addProfile.module.css';
+import {HashRouter, Routes, Route} from "react-router-dom";
+import HomePage from "./pages/HomePage.jsx"
+import AboutPage from './pages/AboutPage.jsx';
+import AddProfilePage from "./pages/AddProfilePage.jsx";
 
 
 const LIMIT = 10;
@@ -120,63 +123,40 @@ function App() {
 
   return (
     <>
+    <HashRouter>
     <div className='App' theme={isDark ? "dark" : "light"}>
       <header className={styles["app-header"]}>
         <Header/>
       </header>
       <main>
-        <div id="header-title">
-          <h1>Profile App</h1>
-        </div>
         <Toggle
         isChecked={isDark}
         handleChange={() => setIsDark(!isDark)}
         />
-        <Wrapper id="about">
-          <About/>
-        </Wrapper>
-        <Wrapper id="add-profile">
-          <AddProfile onAddProfile={handleAddProfile}/>
-        </Wrapper>
-        <Wrapper id="filters">
-            <Filters
-            className = "filters-line"
-            titles={titles}
-            onChange={handleChange}
-            searchName={handleSearch}
-            clear={handleClick}
-            search = {search}
-            title = {title}
-          />
-        </Wrapper>
-
-        <Wrapper id="profiles">
-          {error && <p style={{ color: "red" }}>{error}</p>}
-
-          <div className={cardStyles["flex-container"]}>
-            {profiles.length === 0 && <p>No profiles found.</p>}
-            {
-              profiles.map((profile)=>(
-                <Card
-                  key={profile.id}
-                  name={profile.name}
-                  title={profile.title}
-                  email={profile.email}
-                  img={profile.image_url}  
-                />
-              ))
-            }
-          </div>
-          <div className={cardStyles["pagination"]}>
-            <button onClick={() => setPage(page - 1)} disabled={page === 1}>Previous</button>
-            <span>Page {page}</span>
-            <button onClick={() => setPage(page + 1)}>Next</button>
-          </div>
-        </Wrapper>
+        <Routes>
+          <Route path="/" element={
+            <HomePage 
+              titles={titles}
+              handleChange={handleChange}
+              handleSearch={handleSearch}
+              handleClick={handleClick}
+              search={search}
+              title={title}
+              error={error}
+              profiles={profiles}
+              page={page}
+              setPage={setPage}
+            />
+          }/>
+          <Route path="/about" element={<AboutPage/>}/>
+          <Route path="/addprofile" element={<AddProfilePage/>}/>
+        </Routes>
+        
 
       </main>
 
     </div>
+    </HashRouter>
       
     </>
   )
