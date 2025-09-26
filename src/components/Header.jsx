@@ -16,6 +16,9 @@ const Header = () => {
           </li>
           <li>
             {/* <a href="#profiles">Profiles</a> */}
+            <Link to="/fetched-profiles">All Profiles</Link>
+          </li>
+          <li>
             <Link to="/addprofile">Add Profile</Link>
           </li>
         </ul>

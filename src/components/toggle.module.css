@@ -1,7 +1,6 @@
 .toggle-container {
-  position: absolute;
-  top: 2em;
-  right: 2em;
+  position: relative;
+  margin-left: auto;
 }
 
 .toggle {
