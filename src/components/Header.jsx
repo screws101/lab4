@@ -7,15 +7,12 @@ const Header = () => {
       <nav className="nav">
         <ul className={styles['nav-list']}>
           <li>
-            {/* <a href="#home">Home</a> */}
             <Link to="/">Home</Link>
           </li>
           <li>
-            {/* <a href="#about">About</a> */}
             <Link to="/about">About</Link>
           </li>
           <li>
-            {/* <a href="#profiles">Profiles</a> */}
             <Link to="/fetched-profiles">All Profiles</Link>
           </li>
           <li>

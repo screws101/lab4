@@ -1,41 +1,42 @@
 import './App.css';
 import Header from './components/Header'
-import {useState} from "react"
 import styles from "./components/header.module.css"
 import {Toggle} from "./components/Toggle.jsx";
 import {HashRouter} from "react-router-dom";
 import AppRoutes from "./routes/AppRoutes.jsx";
 import { ProfileProvider } from './context/ProfileContext.jsx';
+import { ModeProvider, useMode } from './context/ModeContext.jsx';
 
 
-function App() {
-  const [isDark, setIsDark] = useState(false);
-
-
-
+function AppContent() {
+  const { mode, toggleMode } = useMode();
 
   return (
-    <>
-    <HashRouter>
-    <ProfileProvider>
-    <div className='App' theme={isDark ? "dark" : "light"}>
+    <div className='App' theme={mode}>
       <header className={styles["app-header"]}>
         <Header/>
         <Toggle
-        isChecked={isDark}
-        handleChange={() => setIsDark(!isDark)}
+        isChecked={mode === 'dark'}
+        handleChange={toggleMode}
         />
       </header>
       <main>
         <AppRoutes />
-        
-
       </main>
-
     </div>
+  );
+}
+
+function App() {
+  return (
+    <>
+    <HashRouter>
+    <ModeProvider>
+    <ProfileProvider>
+      <AppContent />
     </ProfileProvider>
+    </ModeProvider>
     </HashRouter>
-      
     </>
   )
 }

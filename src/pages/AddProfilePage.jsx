@@ -8,11 +8,8 @@ const AddProfilePage = () =>{
     const { addProfile } = useProfiles();
     
     const handleAddProfile = (newProfile) => {
-        // Add the profile to the global state
         addProfile(newProfile);
         alert('Profile added successfully! Redirecting to homepage...');
-        
-        // Redirect to homepage after adding profile
         navigate('/');
     };
 

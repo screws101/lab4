@@ -9,8 +9,10 @@ const FetchedProfilesPage = () => {
   const { profiles, loading, error, fetchProfiles } = useProfiles();
 
   useEffect(() => {
-    fetchProfiles();
-  }, [fetchProfiles]);
+    if (profiles.length === 0) {
+      fetchProfiles();
+    }
+  }, [fetchProfiles, profiles.length]);
 
   return (
     <Wrapper id="fetched-profiles">
@@ -39,7 +41,6 @@ const FetchedProfilesPage = () => {
         </div>
       </div>
       
-      {/* Nested route outlet for profile details */}
       <Outlet />
     </Wrapper>
   );

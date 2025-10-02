@@ -14,11 +14,8 @@ export const ProfileProvider = ({ children }) => {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [hasFetched, setHasFetched] = useState(false);
 
   const fetchProfiles = useCallback(async () => {
-    if (hasFetched) return; // Prevent multiple fetches
-    
     setLoading(true);
     setError('');
 
@@ -52,12 +49,10 @@ export const ProfileProvider = ({ children }) => {
       setError("Failed to fetch profiles");
     } finally {
       setLoading(false);
-      setHasFetched(true);
     }
-  }, [hasFetched]);
+  }, []);
 
   const addProfile = (newProfile) => {
-    // Generate a unique ID for the new profile
     const id = Date.now().toString();
     const profileWithId = {
       ...newProfile,
