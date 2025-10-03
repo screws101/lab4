@@ -6,7 +6,7 @@ const NotFoundPage = () => {
     <Wrapper id="not-found">
       <div style={{ textAlign: 'center', padding: '2rem' }}>
         <h1>404 - Page Not Found</h1>
-        <p>The page you're looking for doesn't exist.</p>
+        <p>This page doesn't exist.</p>
         <Link to="/" style={{ 
           display: 'inline-block', 
           padding: '0.5rem 1rem', 

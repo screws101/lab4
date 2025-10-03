@@ -5,11 +5,12 @@ import {Toggle} from "./components/Toggle.jsx";
 import {HashRouter} from "react-router-dom";
 import AppRoutes from "./routes/AppRoutes.jsx";
 import { ProfileProvider } from './context/ProfileContext.jsx';
-import { ModeProvider, useMode } from './context/ModeContext.jsx';
+import { ModeProvider, ModeContext } from './context/ModeContext.jsx';
+import { useContext } from 'react';
 
 
 function AppContent() {
-  const { mode, toggleMode } = useMode();
+  const { mode, toggleMode } = useContext(ModeContext);
 
   return (
     <div className='App' theme={mode}>

@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 import Wrapper from "../components/Wrapper"
 import AddProfile from "../components/AddProfile"
-import { useProfiles } from '../context/ProfileContext';
+import { ProfileContext } from '../context/ProfileContext';
 
 const AddProfilePage = () =>{
     const navigate = useNavigate();
-    const { addProfile } = useProfiles();
+    const { addProfile } = useContext(ProfileContext);
     
     const handleAddProfile = (newProfile) => {
         addProfile(newProfile);

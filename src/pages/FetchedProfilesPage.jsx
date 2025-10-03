@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import Wrapper from '../components/Wrapper';
 import Card from '../components/Card';
 import cardStyles from '../components/card.module.css';
-import { useProfiles } from '../context/ProfileContext';
+import { ProfileContext } from '../context/ProfileContext';
 
 const FetchedProfilesPage = () => {
-  const { profiles, loading, error, fetchProfiles } = useProfiles();
+  const { profiles, loading, fetchProfiles } = useContext(ProfileContext);
 
   useEffect(() => {
     if (profiles.length === 0) {
@@ -19,8 +19,6 @@ const FetchedProfilesPage = () => {
       <div>
         <h1>All Profiles</h1>
         <p>Click on a profile to view details</p>
-        
-        {error && <p style={{ color: "red" }}>{error}</p>}
         
         <div className={cardStyles["flex-container"]}>
           {profiles.length === 0 && !loading && <p>No profiles found.</p>}
