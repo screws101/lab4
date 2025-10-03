@@ -17,7 +17,7 @@ const AddProfilePage = () =>{
     return(
         <>
         <Wrapper id="add-profile">
-          <AddProfile onAddProfile={handleAddProfile}/>
+          <AddProfile/>
         </Wrapper>
         </>
     )
